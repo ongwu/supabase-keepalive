@@ -1,0 +1,23 @@
+name: Supabase Keepalive
+
+on:
+  schedule:
+    # 每天 UTC 时间 0:00 和 12:00 执行（北京时间 8:00 和 20:00）
+    - cron: '0 0,12 * * *'
+  workflow_dispatch: # 允许手动触发
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Supabase
+        run: |
+          curl -X POST "${{ secrets.SUPABASE_URL }}/rest/v1/keepalive" \
+            -H "apikey: ${{ secrets.SUPABASE_KEY }}" \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_KEY }}" \
+            -H "Content-Type: application/json" \
+            -H "Prefer: return=minimal" \
+            -d '{}'
+          
+      - name: Log result
+        run: echo "Keepalive ping sent at $(date)"
