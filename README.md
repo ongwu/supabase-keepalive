@@ -40,8 +40,10 @@ $$ LANGUAGE plpgsql;
 ```
 
 
-### 2.配置 GitHub Secrets
-在仓库设置中添加以下 Secrets：
+### 2. 配置 GitHub Secrets
+可直接fork项目 https://github.com/ongwu/supabase-keepalive/fork
+
+fork后 ，在仓库设置中添加以下 Secrets：
 
 ```
 进入仓库 → Settings → Secrets and variables → Actions
@@ -50,12 +52,16 @@ $$ LANGUAGE plpgsql;
 SUPABASE_URL	你的 Supabase 项目 URL（例如：https://xxx.supabase.co）
 SUPABASE_KEY	你的 Supabase Service Role Key（以 sb_secret_ 开头）
 ```
+<img width="1660" height="875" alt="image" src="https://github.com/user-attachments/assets/71057109-4098-430c-a664-07be975ecd90" />
+
 ### 3. 测试运行
 ```
 进入 Actions 标签
 选择 Supabase Keepalive workflow
 点击 Run workflow 按钮手动触发
 ```
+<img width="1745" height="663" alt="image" src="https://github.com/user-attachments/assets/697d1412-6c57-400a-b4ef-93d8f4750c90" />
+
 查看运行日志确认成功,成功可在Supabase仪表盘查看Requests：
 <img width="1602" height="636" alt="image" src="https://github.com/user-attachments/assets/ebd2dade-661e-4580-abc4-25fb7574bd0c" />
 
@@ -63,5 +69,5 @@ SUPABASE_KEY	你的 Supabase Service Role Key（以 sb_secret_ 开头）
 ### （可选）修改运行频率
 编辑 .github/workflows/keepalive.yml 中的 cron 表达式。
 
-### 查看运行历史
+### （可选）查看运行历史
 进入 Actions 标签可以查看所有运行记录和日志。
